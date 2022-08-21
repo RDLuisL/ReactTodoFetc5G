@@ -24,19 +24,30 @@ const TaskList = props => {
 
     ));
     
+   const deleteTask = (index) => {
+    const aux = list.splice (index,1)
+    setList(aux)
+    console.log(list) 
+}
+
+
    
     return (
-            <div className="todo-list">
-                {list.length ? chk : "No task"}
-                {list.length ? (
-                    <p>
-                        <button className="button blue" onClick={onClickRemoveItem}>
-                            Delete Task
-                        </button>
-                    </p>
-                ) : null}
-            </div>
+        <>
+        { list.length ?  (list.map((task,indexTask)=>
+        <>
+        <p>{task.label}</p><button onClick={()=>deleteTask(indexTask)} className="btn btn-danger">{indexTask}</button>
+        </>
+        
+        )) :
+        <p>No Task</p>
+    }
+    </>
+        
+        
+       // {list.length ? chk : "No task"}
+       // {list.length ? (
         );
-};
+    };
 
 export default TaskList;

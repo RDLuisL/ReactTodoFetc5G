@@ -2,33 +2,40 @@ import React, {useState} from "react";
 
 const FormTodo = props => {
     const { handleAddItem } = props;
+    const [ newTodo, setNewTodo ] = useState("");
+    const { list,setList } = props;   
+    
     const [todos, setTodos] = useState("");
     const handleSummit = eventos => {
 
         eventos.preventDefault();
 
-        handleAddItem({
+       /*handleAddItem({
             done: false,
             id: (+new Date()).toString(),
             todos
-        });
-        setTodos("");
+        });*/
+
+        const aux = list.push ({ label : newTodo, done : false })
+              
+        
+        console.log(aux);
     };
     return (
-        <form onSubmit={ handleSummit}>    
+        <form onSubmit={handleSummit}>    
             <div className="todo-list">
                 <div className="file-input">
                     <input 
                         type="text"
                         className="text"
-                        value={todos}
-                        onChange={eventos => setTodos(eventos.target.value)}
+                        value={newTodo}
+                        onChange={eventos => setNewTodo(eventos.target.value)}
                     />
                                        
                     <button
                         className="button pink btn btn-success"
                         // este modulo es el condicional que si el valor del arreglo esta vacio se desabilita
-                        disabled={todos ? "" : "disable"}
+                        disabled={list ? "" : "disable"}
                     > ➕
                     </button>
                 </div>

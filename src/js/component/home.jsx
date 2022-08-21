@@ -12,13 +12,15 @@ const Home = () => {
 	const handleAddItem = addItem => {
 		setList([...list, addItem]);
 	};
-//=================== Fetch=============================
+//=================== Fetch - GET =============================
 
 	const getTask = ()=>{
-		fetch('https://assets.breatheco.de/apis/fake/todos/user/bairon00')
+		fetch('https://assets.breatheco.de/apis/fake/todos/user/luisls')
 		.then(data=>data.json())
 		.then(response=>setList(response))
 	}
+
+//============================== Fetch - PUT ==========================================
 		const putTask = ()=>{
 
 			let header = new Headers();
@@ -36,7 +38,7 @@ const Home = () => {
 				body: cuerpo,
 				redirect:'follow'
 			}
-		fetch('https://assets.breatheco.de/apis/fake/todos/user/bairon00', requestOptions) 
+		fetch('https://assets.breatheco.de/apis/fake/todos/user/luisls', requestOptions) 
 			.then(data=>data.json())
 			.then(response=>setList(response))
 			
@@ -47,7 +49,7 @@ const Home = () => {
 	return (
 		<div>
 			<h1>Todos</h1>
-			<FormTodo handleAddItem={handleAddItem} />
+			<FormTodo list={list} setList={setList} handleAddItem={handleAddItem} />
 			<TaskList list={list} setList={setList} />
 		</div>
 	);
