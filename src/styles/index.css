@@ -4,8 +4,8 @@ html {
     display: flex;
 }
 body {
-    width: 100%;
-    margin: auto;
+    background-image: url("https://japonismo.com/wp-content/uploads/2019/12/guia-turistica-barrio-shibuya-tokio-japonismo.jpg");
+    background-size: cover;
 }
 .App {
     font-family: sans-serif;
